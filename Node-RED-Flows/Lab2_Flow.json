@@ -1,0 +1,169 @@
+[
+    {
+        "id": "06786fe0cf80d2bd",
+        "type": "ui_gauge",
+        "z": "0006e4ee157344ca",
+        "name": "",
+        "group": "9b722d9020baa10a",
+        "order": 1,
+        "width": "4",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Voltage Gauge",
+        "label": "V",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "12",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 680,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "f63605a0992f2a4c",
+        "type": "ui_chart",
+        "z": "0006e4ee157344ca",
+        "name": "",
+        "group": "9b722d9020baa10a",
+        "order": 0,
+        "width": "6",
+        "height": "4",
+        "label": "Voltage Chart (V)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 610,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aef0e20eb67088d3",
+        "type": "file in",
+        "z": "0006e4ee157344ca",
+        "name": "",
+        "filename": "/tmp/newfile.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 380,
+        "y": 300,
+        "wires": [
+            [
+                "f63605a0992f2a4c",
+                "06786fe0cf80d2bd",
+                "8841253306ec4d72"
+            ]
+        ]
+    },
+    {
+        "id": "d2c60f46437ec3a1",
+        "type": "inject",
+        "z": "0006e4ee157344ca",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "aef0e20eb67088d3"
+            ]
+        ]
+    },
+    {
+        "id": "8841253306ec4d72",
+        "type": "debug",
+        "z": "0006e4ee157344ca",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "9b722d9020baa10a",
+        "type": "ui_group",
+        "name": "new",
+        "tab": "8a643731b2c3d630",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8a643731b2c3d630",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ff6c6b02d9eec53a",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
