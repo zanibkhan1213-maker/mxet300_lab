@@ -1,0 +1,264 @@
+[
+    {
+        "id": "0006e4ee157344ca",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "06786fe0cf80d2bd",
+        "type": "ui_gauge",
+        "z": "0006e4ee157344ca",
+        "name": "",
+        "group": "9b722d9020baa10a",
+        "order": 1,
+        "width": "4",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Robot Gauge",
+        "label": "V",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "12",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 670,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "f63605a0992f2a4c",
+        "type": "ui_chart",
+        "z": "0006e4ee157344ca",
+        "name": "",
+        "group": "9b722d9020baa10a",
+        "order": 2,
+        "width": "6",
+        "height": "4",
+        "label": "Voltage Chart (V)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 610,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aef0e20eb67088d3",
+        "type": "file in",
+        "z": "0006e4ee157344ca",
+        "name": "",
+        "filename": "/tmp/newfile.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 380,
+        "y": 300,
+        "wires": [
+            [
+                "f63605a0992f2a4c",
+                "06786fe0cf80d2bd"
+            ]
+        ]
+    },
+    {
+        "id": "d2c60f46437ec3a1",
+        "type": "inject",
+        "z": "0006e4ee157344ca",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "aef0e20eb67088d3",
+                "a826158c88592c40",
+                "527f5e76291a5dae"
+            ]
+        ]
+    },
+    {
+        "id": "bf20115a94cb79ca",
+        "type": "ui_gauge",
+        "z": "0006e4ee157344ca",
+        "name": "",
+        "group": "f756dd038c541279",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "Cardinal Directions",
+        "label": "degree",
+        "format": "{{value}}",
+        "min": "-180",
+        "max": "180",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 710,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "a826158c88592c40",
+        "type": "file in",
+        "z": "0006e4ee157344ca",
+        "name": "Com Reading",
+        "filename": "/tmp/newfile2.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 400,
+        "y": 580,
+        "wires": [
+            [
+                "bf20115a94cb79ca"
+            ]
+        ]
+    },
+    {
+        "id": "527f5e76291a5dae",
+        "type": "file in",
+        "z": "0006e4ee157344ca",
+        "name": "Card Dir",
+        "filename": "/tmp/newfile3.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 320,
+        "y": 660,
+        "wires": [
+            [
+                "60a79b12637d9f02"
+            ]
+        ]
+    },
+    {
+        "id": "60a79b12637d9f02",
+        "type": "ui_text_input",
+        "z": "0006e4ee157344ca",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "group": "f756dd038c541279",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 520,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9b722d9020baa10a",
+        "type": "ui_group",
+        "name": "new",
+        "tab": "8a643731b2c3d630",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f756dd038c541279",
+        "type": "ui_group",
+        "name": "card",
+        "tab": "8a643731b2c3d630",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8a643731b2c3d630",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "79d47dcb1c10aab1",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
